@@ -55,6 +55,8 @@ public class ServicosTear {
 
         Rolo rolo = tear.getRolo();
 
+        // Depois adicionar verificador de quantidade de urdume, se o rolo estiver no fim.
+        // Perguntar se quer voltar o rolo pro estoque ou se quer declarar fim de rolo.
         estoque.adicionarRolo(rolo);
         tear.setRolo(null);
         tear.setStatus(StatusTear.DISPONIVEL);
@@ -62,14 +64,29 @@ public class ServicosTear {
     }
 
     // Transfere um rolo de um tear para outro.
-    public void transferirRolo(Tear tear1,Tear tear2) {
+    public void transferirRolo(int numeracaoTear1, int numeracaoTear2) {
         // Transferir do tear1 pro tear2
 
-        if (tear2.semRolo()) {
-            tear2.setRolo(tear1.getRolo());
-            tear1.setRolo(null);
-        }
+        Tear tear1 = teares.buscarTearPorNumero(numeracaoTear1);
+        Tear tear2 = teares.buscarTearPorNumero(numeracaoTear2);
 
+        if(tear1 == null)
+            throw new RuntimeException("Tear " + numeracaoTear1 + " não econtrado");
+        if(tear2 == null)
+            throw new RuntimeException("Tear " + numeracaoTear2 + " não econtrado");
+
+        if(!tear1.temRolo())
+            throw new RuntimeException("Tear " + tear1.getNumero() + " não possui rolo para transferir");
+        
+        if(tear2.temRolo())
+            throw new RuntimeException("Tear  "+ tear2.getNumero() +" já possui rolo");
+        // Depois perguntar se quer remover o rolo e colocar no estoque ou inverter os rolos
+        // Exemplo, do tear 1 ir pro tear 2 e do tear 2 ir pro tear 1
+
+        tear2.setRolo(tear1.getRolo());
+        tear2.setStatus(StatusTear.PARADO);
+        tear1.setRolo(null);
+        tear1.setStatus(StatusTear.DISPONIVEL);
 
     }
 

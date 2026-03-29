@@ -9,13 +9,26 @@ public class EstoqueRolos {
     private List<Rolo> rolos = new ArrayList<>();
 
     // Adicionar rolo no estoque
-    public void adicionarRolo(Rolo rolo) {
-        rolos.add(rolo);
+    public void adicionarRolo(Rolo roloNovo) {
+        rolos.add(roloNovo);
     }
 
     public List<Rolo> getRolos() {
         //return rolos;
         return Collections.unmodifiableList(rolos);
+    }
+
+    public void listarRolos(){
+        int i = 0;
+        for (Rolo r : rolos){
+            i++;
+            System.out.println("========== ROLO " + i + " ==========");
+            System.out.println("Artigo: " + r.getArtigo());
+            System.out.println("Numero do rolo: " + r.getNumeracaoRolo());
+            System.out.println("Metragem: " + r.getMetragem());
+            System.out.println("Peso: " + r.getPeso());
+        }
+        System.out.println();
     }
 
     public Rolo removerRolo(int numeracao) {

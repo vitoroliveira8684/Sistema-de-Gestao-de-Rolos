@@ -17,7 +17,7 @@ public class Tear {
 
     public Tear(int numero){
         this.numero = numero;
-
+        this.status = StatusTear.DISPONIVEL;
     }
 
 

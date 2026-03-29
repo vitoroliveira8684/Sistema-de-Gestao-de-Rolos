@@ -1,5 +1,7 @@
 package services;
 
+import javax.imageio.ImageReadParam;
+
 import models.Tear;
 import repositories.TearesRegistrados;
 
@@ -14,7 +16,14 @@ public class GerirTear {
 
 
     public void adicionarTear(int numeracao){
-        
+        Tear tear = teares.buscarTearPorNumero(numeracao);
+
+        if(tear != null)
+            throw new RuntimeException("Tear já existente");
+
+        Tear tearNovo = new Tear(numeracao);
+
+        teares.adicionarTear(tearNovo);
     }
 
     public Tear removerTear(int numeracao){

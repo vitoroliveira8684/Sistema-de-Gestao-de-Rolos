@@ -26,6 +26,18 @@ public class Rolo{
         return numeracaoRolo;
     }
 
+    public String getArtigo(){
+        return artigo;
+    }
+
+    public Double getMetragem(){
+        return metragem;
+    }
+
+    public Double getPeso(){
+        return peso;
+    }
+
 
 
 }

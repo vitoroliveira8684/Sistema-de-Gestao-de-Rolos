@@ -46,10 +46,17 @@ public class TearesRegistrados {
         return null;
     }
 
-    public Tear getTear(int numeracao){
-        return teares.get(buscarTearPorNumero(numeracao));
+    public void listarTeares(){
+        int i = 0;
+        for (Tear t : teares){
+            i++;
+            System.out.println("========== TEAR " + i + " ==========");
+            System.out.println("Tear: " + t.getNumero());
+            System.out.println("Rolo: " + t.getRolo());
+            System.out.println("Status: " + t.getStatus());
+        }
+        System.out.println();
     }
-
 
 
 }
