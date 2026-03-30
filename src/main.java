@@ -1,12 +1,10 @@
-import models.Rolo;
-import models.Tear;
 import repositories.EstoqueRolos;
 import repositories.TearesRegistrados;
 import services.GerirRolo;
 import services.GerirTear;
 import services.ServicosTear;
 
-public class main {
+public class Main{
 
     public static void main(String[] args){
 

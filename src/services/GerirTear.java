@@ -1,6 +1,5 @@
 package services;
 
-import javax.imageio.ImageReadParam;
 
 import models.Tear;
 import repositories.TearesRegistrados;
@@ -33,7 +32,7 @@ public class GerirTear {
 
         //Se o  tear estiver em produção não pode remover.
 
-        //Se o tear ter rolo, não pode remover.
+        //Se o tear conter rolo, não pode remover.
 
         //Se não encontrar o tear retornar erro.
     }

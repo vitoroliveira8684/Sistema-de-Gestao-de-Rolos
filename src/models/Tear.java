@@ -51,4 +51,6 @@ public class Tear {
     public void setStatus(StatusTear status){
         this.status = status;
     }
+
+    
 }

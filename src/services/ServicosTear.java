@@ -47,9 +47,10 @@ public class ServicosTear {
     public void removerRolo(int numeracao) {
         Tear tear = teares.buscarTearPorNumero(numeracao);
 
+        // Verificar se o tear existe
         if (tear == null)
             throw new RuntimeException("Tear não encontrado");
-
+        // Verificar se o tear tem rolo
         if (!tear.temRolo())
             throw new RuntimeException("O tear já não possui rolo");
 
@@ -70,23 +71,24 @@ public class ServicosTear {
         Tear tear1 = teares.buscarTearPorNumero(numeracaoTear1);
         Tear tear2 = teares.buscarTearPorNumero(numeracaoTear2);
 
+        // Verificar existencia dos teares
         if(tear1 == null)
             throw new RuntimeException("Tear " + numeracaoTear1 + " não econtrado");
         if(tear2 == null)
             throw new RuntimeException("Tear " + numeracaoTear2 + " não econtrado");
 
-        if(!tear1.temRolo())
+        //Verificar se os teares tem ou não rolo
+        if(!tear1.temRolo()) //Tear 1 tem que ter rolo
             throw new RuntimeException("Tear " + tear1.getNumero() + " não possui rolo para transferir");
-        
-        if(tear2.temRolo())
+        if(tear2.temRolo())//Tear 2 não pode ter rolo
             throw new RuntimeException("Tear  "+ tear2.getNumero() +" já possui rolo");
         // Depois perguntar se quer remover o rolo e colocar no estoque ou inverter os rolos
         // Exemplo, do tear 1 ir pro tear 2 e do tear 2 ir pro tear 1
 
-        tear2.setRolo(tear1.getRolo());
-        tear2.setStatus(StatusTear.PARADO);
-        tear1.setRolo(null);
-        tear1.setStatus(StatusTear.DISPONIVEL);
+        tear2.setRolo(tear1.getRolo()); // Associar rolo do tear 1 ao tear 2
+        tear2.setStatus(StatusTear.PARADO); // Mudar status do tear 2
+        tear1.setRolo(null); // Remover o rolo do tear 1
+        tear1.setStatus(StatusTear.DISPONIVEL); // Mudar status do tear 1
 
     }
 
